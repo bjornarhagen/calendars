@@ -31,6 +31,7 @@ module.exports = {
 		extractSass,
 		new CopyWebpackPlugin([
 			{ from: './src/html/index.html', to: __dirname+'/dist/index.html' },
+			{ from: './src/images/', to: __dirname+'/dist/images/' },
 		])
 	]
 }
