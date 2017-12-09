@@ -4,7 +4,7 @@ Go in `/dist` to have a view of the calendars. Print with Ctrl+P, choose no marg
 
 ## Setup
 
-Run `npm install`
+Run `npm install && npm start`
 
 ## Usage
 
