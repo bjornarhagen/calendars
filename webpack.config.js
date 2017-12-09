@@ -30,7 +30,7 @@ module.exports = {
 	plugins: [
 		extractSass,
 		new CopyWebpackPlugin([
-			{ from: './src/html/2018.html',                    to: __dirname+'/dist/2018.html' },
+			{ from: './src/html/index.html', to: __dirname+'/dist/index.html' },
 		])
 	]
 }
