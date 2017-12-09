@@ -1,0 +1,44 @@
+////////////
+// COLORS //
+////////////
+
+// All colors
+$colorGreen:   #00ff00;
+$colorOrange:  #ffaa00;
+$colorBlack:   #000000;
+$colorWhite:   #ffffff;
+$colorLight1:  #eeeeee;
+
+// Main color variables
+$colorPrimary: $colorOrange;
+$colorAccent:  $colorGreen;
+$colorFg:      $colorBlack;
+$colorBg:      $colorLight1;
+
+// Calendar colors
+$colorCalFg:                 $colorFg;
+$colorCalBg:                 $colorWhite;
+
+$colorCalYear:               $colorPrimary;
+$colorCalMonths:             $colorAccent;
+
+$colorCalDays:               $colorCalFg;
+$colorCalDaysWeekend:        $colorCalFg;
+$colorCalDaysWeekFirst:      $colorCalFg;
+$colorCalDaysWeekLast:       $colorCalFg;
+
+$colorCalDaysNames:          $colorCalFg;
+$colorCalDaysNamesWeekend:   $colorCalFg;
+$colorCalDaysNamesWeekFirst: $colorCalFg;
+$colorCalDaysNamesWeekLast:  $colorCalFg;
+
+////////////
+// FONTS  //
+////////////
+
+
+
+
+////////////
+// IMAGES //
+////////////

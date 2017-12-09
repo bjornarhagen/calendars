@@ -1,0 +1,142 @@
+@import '_config';
+
+/* Fix box-sizing */
+*, *:before, *:after { box-sizing: inherit;    }
+html                 { box-sizing: border-box; }
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+	font-size: 14px;
+}
+
+body {
+	color: $colorFg;
+	background-color: $colorBg;
+}
+
+// Clearfix
+.clear:before,
+.clear:after {
+	content: " ";
+	display: table
+}
+.clear:after{
+	clear: both
+}
+
+.wrapper {
+	overflow: auto;
+	display: flex;
+	padding: 5vh 5vw;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+// One A4 paper page (landscape)
+.calendar {
+	display: flex;
+	flex-wrap: wrap;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: flex-start;
+	align-content: space-between;
+	margin: 0 0 10em 0;
+	margin: 0 0 10vw 0;
+	padding: 0;
+	background-color: $colorCalBg;
+	box-shadow: 0 2em 5em rgba(darken($colorCalBg, 20%), 0.2);
+	overflow-y: auto;
+	overflow-x: hidden;
+
+	&.a1 { width: 594mm; height: 841mm; }
+	&.a2 { width: 420mm; height: 594mm; }
+	&.a3 { width: 297mm; height: 420mm; }
+	&.a4 { width: 210mm; height: 297mm; }
+
+	// &:first-child {
+	// 	margin-left: 10vw;
+	// }
+
+	.cal {
+		&-month {
+			display: flex;
+			flex-wrap: nowrap;
+			flex-direction: column;
+			justify-content: space-between;
+			align-items: self-start;
+			align-content: center;
+			flex-basis: 33.333333%;
+			// padding: 1em;
+
+			&-1  { order: 1;  } &-2  { order: 2;  } &-3  { order: 3;  }
+			&-4  { order: 4;  } &-5  { order: 5;  } &-6  { order: 6;  }
+			&-7  { order: 7;  } &-8  { order: 8;  } &-9  { order: 9;  }
+			&-10 { order: 10; } &-11 { order: 11; } &-12 { order: 12; }
+
+			&-extra { display: none; }
+
+			ul {
+				display: flex;
+				margin: 0;
+				padding: 0;
+				width: 100%;
+				flex-direction: row;
+				list-style-type: none;
+				justify-content: space-between;
+
+				li {
+					width: (100%/7);
+					text-align: right;
+				}
+			}
+		}
+	}
+
+	&.layout {
+		&-middle-hole {
+			.cal {
+				&-month {
+					&-1  { order: 1;  } &-2  { order: 2;  } &-3  { order: 3;  }
+					&-4  { order: 4;  } &-5  { order: 6;  } &-6  { order: 7;  }
+					&-7  { order: 9;  } &-8  { order: 10; } &-9  { order: 12; }
+					&-10 { order: 13; } &-11 { order: 14; } &-12 { order: 15; }
+
+					&-extra {
+						display: block;
+
+						&-1  { order: 5;  }
+						&-2  { order: 8;  }
+						&-3  { order: 11;  }
+					}
+				}
+			}
+		}
+
+		&-top {
+			align-content: flex-start;
+		}
+
+		&-bottom {
+			align-content: flex-end;
+		}
+	}
+}
+
+// Make sure print behaves correctly
+@media print {
+	.calendar {
+		position: relative;
+		top: 0;
+		left: 0;
+		right: 0;
+		padding: 0 !important;
+		margin: 0 !important;
+		transform: none;
+		max-width: 100vw;
+		max-height: 100vh;
+		box-shadow: none;
+	}
+}
