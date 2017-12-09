@@ -8,11 +8,87 @@
 	<link rel="stylesheet" href="css/main.css">
 </head>
 <body>
+	<div class="settings">
+		<form action="index.html">
+			<div class="settings-single">
+				<label for="">Year</label>
+				<input type="text" name="year">
+			</div>
+			<div class="settings-single">
+				<label for="">Paper size</label>
+				<select name="paper_size">
+					<option value="a4">a4</option>
+					<option value="a3">a3</option>
+					<option value="a2">a2</option>
+					<option value="a1">a1</option>
+				</select>
+			</div>
+			<div class="settings-single">
+				<label for="">Layout</label>
+				<select name="layout">
+					<option value="layout-middle-hole">Middle hole</option>
+					<option value="layout-full">Full</option>
+					<option value="layout-top">Top</option>
+					<option value="layout-bottom">Bottom</option>
+				</select>
+			</div>
+			<div class="settings-single">
+				<label for="">Year representation</label>
+				<select name="year_rep">
+					<option value="hex">Hex</option>
+					<option value="binary">Binary</option>
+					<option value="long">Long</option>
+					<option value="short">Short</option>
+				</select>
+			</div>
+			<div class="settings-single">
+				<label for="">Month representation</label>
+				<select name="month_rep">
+					<option value="hex">Hex</option>
+					<option value="binary">Binary</option>
+					<option value="name_long">Long</option>
+					<option value="name_short">Short</option>
+					<option value="name_narrow">Narrow</option>
+					<option value="numeric">Numeric</option>
+					<option value="2-digit">2-digit</option>
+				</select>
+			</div>
+			<div class="settings-single">
+				<label for="">Weekday representation</label>
+				<select name="weekday_rep">
+					<option value="narrow">Narrow</option>
+					<option value="short">Short</option>
+					<option value="long">Long</option>
+				</select>
+			</div>
+			<div class="settings-single">
+				<label for="">Day representation</label>
+				<select name="day_rep">
+					<option value="hex">Hex</option>
+					<option value="binary">Binary</option>
+					<option value="numeric">Numeric</option>
+					<option value="2-digit">2-digit</option>
+				</select>
+			</div>
+			<div class="settings-single">
+				<label for="">Color scheme</label>
+				<select name="theme">
+					<option value="dark">Dark</option>
+					<option value="light">Light</option>
+				</select>
+			</div>
+			<div class="settings-single">
+				<label for="">Background image</label>
+				<select name="bg_image">
+					<option value="cron">CRON</option>
+				</select>
+			</div>
+			<button type="submit">Apply</button>
+		</form>
+			<a href="index.html"><button type="submit">Reset</button></a>
+	</div>
 	<div class="wrapper">
-		<section class="calendar a4 layout-middle-hole"></section>
-		<section class="calendar a4 layout-top"></section>
-		<section class="calendar a4 layout-bottom"></section>
-		<section class="calendar a4"></section>
+		<section class="calendar"></section>
 	</div>
 	<script src="js/app.js"></script>
 </body>
