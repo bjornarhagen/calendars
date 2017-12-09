@@ -30,9 +30,9 @@ body {
 	overflow: auto;
 	display: flex;
 	padding: 5vh 5vw;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: flex-start;
 }
 
 // One A4 paper page (landscape)
@@ -42,10 +42,10 @@ body {
 	flex-direction: row;
 	justify-content: space-between;
 	align-items: flex-start;
-	align-content: space-between;
+	align-content: space-around;
 	margin: 0 0 10em 0;
 	margin: 0 0 10vw 0;
-	padding: 0;
+	padding: 5mm;
 	background-color: $colorCalBg;
 	box-shadow: 0 2em 5em rgba(darken($colorCalBg, 20%), 0.2);
 	overflow-y: auto;
@@ -66,10 +66,12 @@ body {
 			flex-wrap: nowrap;
 			flex-direction: column;
 			justify-content: space-between;
-			align-items: self-start;
+			align-items: flex-start;
 			align-content: center;
 			flex-basis: 33.333333%;
-			// padding: 1em;
+			padding: 0 3em;
+			font-family: monospace;
+			line-height: 1em;
 
 			&-1  { order: 1;  } &-2  { order: 2;  } &-3  { order: 3;  }
 			&-4  { order: 4;  } &-5  { order: 5;  } &-6  { order: 6;  }
@@ -81,18 +83,33 @@ body {
 			ul {
 				display: flex;
 				margin: 0;
-				padding: 0;
+				padding: 0.2em 0;
 				width: 100%;
 				flex-direction: row;
 				list-style-type: none;
 				justify-content: space-between;
+				align-items: flex-start;
+				align-content: flex-start;
 
 				li {
 					width: (100%/7);
 					text-align: right;
 				}
+
+				&.cal-weekday-headings {
+					font-weight: 700;
+					margin-bottom: 0.5em;
+				}
 			}
+
+			.cal-month-title {
+				margin: 0 0 1em 0;
+				width: 100%;
+				text-align: center;
+			}
+
 		}
+
 	}
 
 	&.layout {
@@ -127,12 +144,19 @@ body {
 
 // Make sure print behaves correctly
 @media print {
+	.settings {
+		display: none;
+	}
+
+	.wrapper {
+		padding: 0;
+	}
+
 	.calendar {
 		position: relative;
 		top: 0;
 		left: 0;
 		right: 0;
-		padding: 0 !important;
 		margin: 0 !important;
 		transform: none;
 		max-width: 100vw;
