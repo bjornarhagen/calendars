@@ -1,0 +1,52 @@
+$colorCalFg:                 $colorGray3;
+$colorCalBg:                 $colorWhite;
+
+$colorCalYear:               $colorGray1;
+$colorCalMonths:             $colorGray1;
+
+$colorCalDays:               $colorCalFg;
+$colorCalDaysWeekend:        $colorBlack;
+
+$colorCalDaysNames:          $colorCalFg;
+$colorCalDaysNamesWeekend:   $colorBlack;
+
+.calendar {
+	&.theme-minimal {
+		color: $colorCalFg;
+		background-color: $colorCalBg;
+
+		.cal {
+			&-year {
+				color: $colorCalYear;
+			}
+
+			&-month {
+				ul {
+					li {
+						color: $colorCalDays;
+
+						&.cal-day-saturday,
+						&.cal-day-sunday {
+							color: $colorCalDaysWeekend;
+						}
+					}
+
+					&.cal-weekday-headings {
+						li {
+							color: $colorCalDaysNames;
+
+							&.cal-heading-saturday,
+							&.cal-heading-sunday {
+								color: $colorCalDaysNamesWeekend;
+							}
+						}
+					}
+				}
+
+				&-title {
+					color: $colorCalMonths;
+				}
+			}
+		}
+	}
+}

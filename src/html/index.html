@@ -6,6 +6,8 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>Calendars</title>
 	<link rel="stylesheet" href="css/main.css">
+	<link href="https://fonts.googleapis.com/css?family=Playfair+Display:700,900" rel="stylesheet">
+	<link rel='stylesheet' href='//cdn.jsdelivr.net/npm/hack-font/build/web/hack.css'>
 </head>
 <body>
 	<div class="settings">
@@ -73,22 +75,28 @@
 			<div class="settings-single">
 				<label for="">Color scheme</label>
 				<select name="theme">
-					<option value="dark">Dark</option>
-					<option value="light">Light</option>
+					<option value="theme-dark">Dark</option>
+					<option value="theme-dark_arch">Dark arch</option>
+					<option value="theme-light">Light</option>
+					<option value="theme-light_arch">Light arch</option>
+					<option value="theme-matrix">Matrix</option>
+					<option value="theme-minimal">Minimal</option>
 				</select>
 			</div>
 			<div class="settings-single">
 				<label for="">Background image</label>
-				<select name="bg_image">
-					<option value="cron">CRON</option>
+				<select id="setting-bg_image" name="bg_image">
+					<option value="blank">None</option>
 				</select>
 			</div>
 			<button type="submit">Apply</button>
 		</form>
-			<a href="index.html"><button type="submit">Reset</button></a>
+		<a href="index.html"><button type="submit">Reset</button></a>
+		<p>CTRL+P to print. Remember to turn of margins!</p>
 	</div>
 	<div class="wrapper">
 		<section class="calendar"></section>
+		<h1 class="calendar-meta-title">Calendar, <span class="year">2018</span></h1>
 	</div>
 	<script src="js/app.js"></script>
 </body>

@@ -3,11 +3,33 @@
 ////////////
 
 // All colors
-$colorGreen:   #00ff00;
-$colorOrange:  #ffaa00;
-$colorBlack:   #000000;
-$colorWhite:   #ffffff;
-$colorLight1:  #eeeeee;
+$colorRed:       #ff0000;
+$colorPink:      #ffc0cb;
+$colorPurple:    #ff00ff;
+$colorBlue:      #0000ff;
+$colorTurquoise: #00ffff;
+$colorGreen:     #00ff00;
+$colorYellow:    #ffff00;
+$colorOrange:    #ffa500;
+$colorBronze:    #cd7f32;
+$colorBrown:     #a52a2a;
+$colorWhite:     #ffffff;
+$colorLight1:    #eeeeee;
+$colorLight2:    #dddddd;
+$colorLight3:    #cccccc;
+$colorLight4:    #bbbbbb;
+$colorLight5:    #aaaaaa;
+$colorGray1:     #999999;
+$colorGray2:     #888888;
+$colorGray3:     #777777;
+$colorGray4:     #666666;
+$colorGray5:     #555555;
+$colorDark1:     #444444;
+$colorDark2:     #333333;
+$colorDark3:     #222222;
+$colorDark4:     #111111;
+$colorDark5:     #000000;
+$colorBlack:     #000000;
 
 // Main color variables
 $colorPrimary: $colorOrange;
@@ -15,30 +37,6 @@ $colorAccent:  $colorGreen;
 $colorFg:      $colorBlack;
 $colorBg:      $colorLight1;
 
-// Calendar colors
-$colorCalFg:                 $colorFg;
-$colorCalBg:                 $colorWhite;
-
-$colorCalYear:               $colorPrimary;
-$colorCalMonths:             $colorAccent;
-
-$colorCalDays:               $colorCalFg;
-$colorCalDaysWeekend:        $colorCalFg;
-$colorCalDaysWeekFirst:      $colorCalFg;
-$colorCalDaysWeekLast:       $colorCalFg;
-
-$colorCalDaysNames:          $colorCalFg;
-$colorCalDaysNamesWeekend:   $colorCalFg;
-$colorCalDaysNamesWeekFirst: $colorCalFg;
-$colorCalDaysNamesWeekLast:  $colorCalFg;
-
 ////////////
 // FONTS  //
-////////////
-
-
-
-
-////////////
-// IMAGES //
 ////////////

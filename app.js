@@ -15,6 +15,8 @@ document.addEventListener("DOMContentLoaded", function() {
 	function toHex(d)    { return ("0"+(Number(d).toString(16))).slice(-2) }
 	function toBinary(d) { return String("00000" + (+d).toString(2)).slice(-5); }
 
+	document.querySelector('.year').innerHTML = dateYear;
+
 	// Fill the calInfo variable with info about this year
 	for (var mm = 1; mm <= 12; mm++) {
 		var month = (new Date(dateYear, mm-1, 1));
@@ -56,19 +58,37 @@ document.addEventListener("DOMContentLoaded", function() {
 	// Put info into calendars
 	for (var i = 0; i < cals.length; i++) {
 
+		cals[i].classList += ' ' + (getURLParameter('theme') || 'theme-dark');
 		cals[i].classList += ' ' + (getURLParameter('paper_size') || 'a4');
 		cals[i].classList += ' ' + (getURLParameter('layout') || 'layout-middle-hole');
+		cals[i].style.backgroundImage = 'URL(\"images/' + (getURLParameter('bg_image') || 'cards/white_on_black/cron') + '.png\")';
 
 		// Create 3 extra months. This allows us to change layout easier
 		for (var extraMonth = 1; extraMonth <= 3; extraMonth++) {
 			var container = document.createElement("div");
-			container.classList += 'cal-container cal-month cal-month-extra cal-month-extra-' + extraMonth;
+			container.classList += 'cal-month cal-month-extra cal-month-extra-' + extraMonth;
 
-			// var calYear = document.createElement("h1");
-			// calMonth.classList += 'cal-month-title';
-			// var calMonthName = document.createTextNode(getURLParameter('month_rep') || 'hex');
+			var calYear = document.createElement("h1");
+			calYear.classList += 'cal-year';
+			var yearText = String(dateYear);
+
+			switch (getURLParameter('year_rep') || 'hex') {
+				case 'hex':
+					yearText = '0x' + dateYear.toString(16).toUpperCase();
+					break;
+				case 'binary':
+					yearText = toBinary(yearText);
+					break;
+				case 'short':
+					yearText = yearText.substring(2);
+					break;
+			}
+
+			var calYearName = document.createTextNode(yearText);
 
 
+			calYear.appendChild(calYearName);
+			container.appendChild(calYear);
 			cals[i].appendChild(container);
 		}
 
@@ -80,8 +100,6 @@ document.addEventListener("DOMContentLoaded", function() {
 
 			// Create month heading and weekday names
 			(function() {
-				console.log(calInfo[mm]['name_long']);
-
 				var calMonth = document.createElement("h2");
 				calMonth.classList += 'cal-month-title';
 				var calMonthName = document.createTextNode(calInfo[mm][ (getURLParameter('month_rep') || 'hex') ].toUpperCase());
@@ -163,5 +181,114 @@ document.addEventListener("DOMContentLoaded", function() {
 
 			cals[i].appendChild(container);
 		}
+
 	}
+
+	(function() {
+		// Give height to extra months, so we can position the year within them
+		var calMonths = document.querySelectorAll('.cal-month');
+		var calMonthHeightTotal = 0;
+		for (var i = 0; i < calMonths.length; i++) {
+			calMonthHeightTotal += calMonths[i].clientHeight;
+		}
+
+		var extraMonths = document.querySelectorAll('.cal-month-extra');
+		for (var i = 0; i < extraMonths.length; i++) {
+			// Divide by 12.5 because then we get rid of some extra high months with 6 rows...
+			// Just seems to be giving a better height
+			extraMonths[i].style.height = (calMonthHeightTotal/12.5)+'px';
+		}
+	})();
+
+	(function() {
+		var images = {
+			white_on_black: [
+				'White on black',
+				'arch',
+				'cron',
+				'debian',
+				'fedora',
+				'freebsd',
+				'gcc',
+				'gnu-linux',
+				'gnu',
+				'golang',
+				'iptables',
+				'kali',
+				'kill',
+				'linuxmasterrace',
+				'manjaro',
+				'php',
+				'python',
+				'root',
+				'solus',
+				'sudo',
+				'su',
+				'swift',
+				'tor',
+				'ubuntu',
+				'userdel',
+			],
+			orange_on_white: [
+				'Orange on white',
+				'arch',
+				'cron',
+				'debian',
+				'fedora',
+				'freebsd',
+				'gcc',
+				'gnu-linux',
+				'gnu',
+				'golang',
+				'iptables',
+				'joker-poster',
+				'kali',
+				'kill',
+				'linuxmasterrace',
+				'manjaro',
+				'penguin-skull',
+				'php',
+				'python',
+				'root',
+				'solus',
+				'sudo',
+				'su',
+				'swift',
+				'tor',
+				'ubuntu',
+				'userdel',
+			],
+			blue_on_white: [
+				'Blue on white',
+				'arch',
+			],
+			black_on_white: [
+				'Black on white',
+				'interject',
+				'cosmotux',
+			]
+		}
+
+		var settingBgImage = document.querySelector('#setting-bg_image');
+
+		for (var i in images) {
+			if (images.hasOwnProperty(i)) {
+				var optgroup = document.createElement('optgroup');
+				optgroup.setAttribute('label', images[i][0]);
+
+
+				for (var j = 1; j < images[i].length; j++) {
+					var option = document.createElement('option');
+					var optionText = document.createTextNode( images[i][j] );
+
+					option.setAttribute('value', 'cards/' + i +'/'+ images[i][j])
+
+					option.appendChild(optionText);
+					optgroup.appendChild(option);
+				}
+
+				settingBgImage.appendChild(optgroup);
+			}
+		}
+	})();
 });

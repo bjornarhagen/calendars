@@ -1,4 +1,5 @@
 @import '_config';
+@import '_themes';
 
 /* Fix box-sizing */
 *, *:before, *:after { box-sizing: inherit;    }
@@ -29,32 +30,47 @@ body {
 .wrapper {
 	overflow: auto;
 	display: flex;
-	padding: 5vh 5vw;
-	flex-direction: column;
-	justify-content: flex-start;
-	align-items: flex-start;
+	padding: 10vh 5vw 5vh;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	align-content: center;
 }
 
 // One A4 paper page (landscape)
 .calendar {
+	position: relative;
 	display: flex;
+	flex-shrink: 0;
 	flex-wrap: wrap;
 	flex-direction: row;
 	justify-content: space-between;
 	align-items: flex-start;
-	align-content: space-around;
+	align-content: space-between;
 	margin: 0 0 10em 0;
 	margin: 0 0 10vw 0;
 	padding: 5mm;
-	background-color: $colorCalBg;
-	box-shadow: 0 2em 5em rgba(darken($colorCalBg, 20%), 0.2);
+	box-shadow: 0 2em 4em rgba(darken($colorBlue, 35%), 0.2);
 	overflow-y: auto;
 	overflow-x: hidden;
+	background-repeat: no-repeat;
+	font-family: Hack, monospace;
 
 	&.a1 { width: 594mm; height: 841mm; }
 	&.a2 { width: 420mm; height: 594mm; }
 	&.a3 { width: 297mm; height: 420mm; }
 	&.a4 { width: 210mm; height: 297mm; }
+
+	&-meta {
+		&-title {
+			margin: 0;
+			font-family: 'Playfair Display', serif;
+			font-weight: 900;
+			flex-shrink: 1;
+			font-size: 6em;
+			padding-left: 1em;
+		}
+	}
 
 	// &:first-child {
 	// 	margin-left: 10vw;
@@ -70,7 +86,7 @@ body {
 			align-content: center;
 			flex-basis: 33.333333%;
 			padding: 0 3em;
-			font-family: monospace;
+			font-size: 1em;
 			line-height: 1em;
 
 			&-1  { order: 1;  } &-2  { order: 2;  } &-3  { order: 3;  }
@@ -78,7 +94,7 @@ body {
 			&-7  { order: 7;  } &-8  { order: 8;  } &-9  { order: 9;  }
 			&-10 { order: 10; } &-11 { order: 11; } &-12 { order: 12; }
 
-			&-extra { display: none; }
+			&-extra { display: none; padding: 0; }
 
 			ul {
 				display: flex;
@@ -94,18 +110,32 @@ body {
 				li {
 					width: (100%/7);
 					text-align: right;
+					font-weight: 400;
 				}
 
 				&.cal-weekday-headings {
-					font-weight: 700;
 					margin-bottom: 0.5em;
+
+					li {
+						font-weight: 700;
+					}
 				}
 			}
 
+			.cal-year {
+				margin: 0;
+				width: 100%;
+				text-align: center;
+				font-size: 1.5em;
+				line-height: 1em;
+			}
+
 			.cal-month-title {
+				line-height: 1em;
 				margin: 0 0 1em 0;
 				width: 100%;
 				text-align: center;
+				font-size: 1.2em;
 			}
 
 		}
@@ -113,7 +143,34 @@ body {
 	}
 
 	&.layout {
+		&-full {
+			padding: 40mm 5mm 25mm;
+			background-position: center center;
+			background-size: 75%;
+
+			.cal-month {
+				&-extra {
+					&-1  {
+						position: absolute;
+						top: 15mm;
+						left: 0;
+						right: 0;
+						display: block;
+						margin: 0 auto;
+
+						.cal-year {
+							display: block;
+						}
+					}
+				}
+			}
+		}
+
 		&-middle-hole {
+			padding: 15mm 5mm;
+			background-position: center 45%;
+			background-size: 60%;
+
 			.cal {
 				&-month {
 					&-1  { order: 1;  } &-2  { order: 2;  } &-3  { order: 3;  }
@@ -122,11 +179,20 @@ body {
 					&-10 { order: 13; } &-11 { order: 14; } &-12 { order: 15; }
 
 					&-extra {
-						display: block;
+						display: flex;
+
+						.cal-year { display: none; }
 
 						&-1  { order: 5;  }
 						&-2  { order: 8;  }
-						&-3  { order: 11;  }
+						&-3  {
+							order: 11;
+							justify-content: flex-end;
+							align-items: center;
+							align-content: center;
+
+							.cal-year { display: block; }
+						}
 					}
 				}
 			}
@@ -134,17 +200,83 @@ body {
 
 		&-top {
 			align-content: flex-start;
+			padding: 25mm 5mm 0;
+			background-position: center bottom;
+			background-size: 30%;
+
+			.cal-month {
+				&-extra {
+					&-1  {
+						position: absolute;
+						top: 10mm;
+						left: 0;
+						right: 0;
+						display: block;
+						margin: 0 auto;
+
+						.cal-year {
+							display: block;
+						}
+					}
+				}
+			}
 		}
 
 		&-bottom {
 			align-content: flex-end;
+			padding: 0 5mm 15mm;
+			background-position: center top;
+			background-size: 32.5%;
+
+			.cal-month {
+				&-extra {
+					&-1  {
+						position: absolute;
+						top: 15mm;
+						right: 10mm;
+						display: block;
+						margin: 0;
+
+						.cal-year {
+							display: block;
+							transform: rotate(-90deg);
+						}
+					}
+				}
+			}
 		}
+	}
+}
+
+.settings {
+	background-color: $colorWhite;
+	padding: 1em;
+
+	form {
+		display: flex;
+		justify-content: space-between;
+		flex-wrap: wrap;
+
+		.settings-single {
+			width: 25%;
+			padding: 0.5em 1em;
+		}
+
+	}
+
+	button {
+		display: inline-block;
+		padding: 0.25em 1em;
+		border: none;
+		color: $colorWhite;
+		background-color: $colorBlack;
 	}
 }
 
 // Make sure print behaves correctly
 @media print {
-	.settings {
+	.settings,
+	.calendar-meta-title {
 		display: none;
 	}
 
