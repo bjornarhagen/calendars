@@ -1,6 +1,6 @@
 # Calendars
 
-See live: https://xdh.no/projects/calendars/
+See live: https://bjornar.dev/_/calendars
 
 Go in `/dist` to have a view of the calendars. Print with Ctrl+P, choose no margins in settings.
 
