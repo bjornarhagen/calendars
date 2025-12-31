@@ -1,6 +1,6 @@
 # Calendars
 
-See live: https://bjornar.dev/_/calendars
+See live: [https://bjornar.dev/_/calendars](https://bjornar.dev/_/calendars/index.html)
 
 Go in `/dist` to have a view of the calendars. Print with Ctrl+P, choose no margins in settings.
 
